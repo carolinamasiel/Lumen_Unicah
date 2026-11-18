@@ -33,11 +33,23 @@ function App() {
   const [pregunta, setPregunta] = useState('')
   const [pensando, setPensando] = useState(false)
   const [respondiendo, setRespondiendo] = useState(false)
+  const [acompanando, setAcompanando] = useState(false)
+  const [saludando, setSaludando] = useState(true)
   const [mensajes, setMensajes] = useState([
     mensajeInicial
   ])
 
   const mensajesRef = useRef(null)
+
+useEffect(() => {
+  if (!saludando) return
+
+  const tiempoSaludo = setTimeout(() => {
+    setSaludando(false)
+  }, 3000)
+
+  return () => clearTimeout(tiempoSaludo)
+}, [saludando])
 
   // DESPLAZAMIENTO AUTOMÁTICO DEL CHAT
 
@@ -51,19 +63,39 @@ function App() {
 
   // NUEVA CONVERSACIÓN
 
-  const nuevaConversacion = () => {
-    setMensajes([mensajeInicial])
-    setPregunta('')
-    setSeccion('Asistente')
-    disabled={pensando}
-  }
+const nuevaConversacion = () => {
+  setMensajes([mensajeInicial])
+  setPregunta('')
+  setSeccion('Asistente')
+  setSaludando(true)
+}
 
   // ENVIAR MENSAJE
 
- 
-
 const enviarMensaje = (texto) => {
-  if (!texto.trim() || pensando || respondiendo) return
+  if (!texto.trim() || pensando || respondiendo || acompanando) return
+
+  const textoNormalizado = texto
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+
+  const necesitaApoyo = [
+    'necesito apoyo',
+    'necesito hablar',
+    'consejeria',
+    'me siento triste',
+    'me siento solo',
+    'me siento sola',
+    'orientacion espiritual',
+    'acompañamiento',
+    'hablar con alguien',
+    'hablar con un sacerdote'
+  ].some(frase =>
+    textoNormalizado.includes(
+      frase.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    )
+  )
 
   setMensajes(anteriores => [
     ...anteriores,
@@ -77,21 +109,38 @@ const enviarMensaje = (texto) => {
   setPensando(true)
 
   setTimeout(() => {
-
     setPensando(false)
-    setRespondiendo(true)
 
-    setMensajes(anteriores => [
-      ...anteriores,
-      {
-        tipo: 'bot',
-        texto: 'Gracias por acercarte a mí. 💛 Actualmente estoy en una versión de demostración.'
-      }
-    ])
+    if (necesitaApoyo) {
+      setAcompanando(true)
 
-    setTimeout(() => {
-      setRespondiendo(false)
-    }, 3000)
+      setMensajes(anteriores => [
+        ...anteriores,
+        {
+          tipo: 'bot',
+          texto: 'Gracias por acercarte a mí. 💛 Puedo orientarte sobre los servicios de acompañamiento de Bienestar y Pastoral. Por ahora estoy en una versión de demostración y todavía no tengo acceso a los contactos oficiales.'
+        }
+      ])
+
+      setTimeout(() => {
+        setAcompanando(false)
+      }, 5000)
+
+    } else {
+      setRespondiendo(true)
+
+      setMensajes(anteriores => [
+        ...anteriores,
+        {
+          tipo: 'bot',
+          texto: 'Gracias por acercarte a mí. 💛 Actualmente estoy en una versión de demostración.'
+        }
+      ])
+
+      setTimeout(() => {
+        setRespondiendo(false)
+      }, 3000)
+    }
 
   }, 2500)
 }
@@ -160,10 +209,28 @@ const enviarMensaje = (texto) => {
             className="logo-unicah"
           />
 
-          <div className="identificacion">
-            <span>Bienestar y Pastoral</span>
-            <small>Prototipo académico</small>
-          </div>
+          
+<div className="acciones-superiores">
+
+  <div className="identificacion">
+    <span>Bienestar y Pastoral</span>
+    <small>Prototipo académico</small>
+  </div>
+
+  {seccion === 'Asistente' && (
+    <button
+      className="nueva-conversacion"
+      onClick={nuevaConversacion}
+      type="button"
+      disabled={pensando || respondiendo || acompanando}
+    >
+      <Plus size={17} />
+      Nueva conversación
+    </button>
+  )}
+
+</div>
+
 
         </div>
 
@@ -174,40 +241,7 @@ const enviarMensaje = (texto) => {
 
           <section className="chat">
 
-            <div className="chat-header">
-
-              <div className="perfil-asistente">
-
-                <div className="avatar">
-                  <img
-                    src="/mascotas/lumen_03.png"
-                    alt="Asistente LUMEN"
-                    className="mascota-avatar"
-                  />
-                </div>
-
-                <div>
-                  <h3>Asistente LUMEN</h3>
-                  <span>
-                    Tu compañero universitario
-                  </span>
-                </div>
-
-              </div>
-
-              
-<button
-  className="nueva-conversacion"
-  onClick={nuevaConversacion}
-  type="button"
-  disabled={pensando || respondiendo}
->
-  <Plus size={17} />
-  Nueva conversación
-</button>
-
-
-            </div>
+           
 
             {/* MENSAJES */}
 
@@ -226,7 +260,7 @@ const enviarMensaje = (texto) => {
 
                   {mensaje.tipo === 'bot' && (
                     <img
-                      src="/mascotas/lumen_02.png"
+                      src="/mascotas/lumen_03.png"
                       alt="LUMEN"
                       className="avatar-mensaje"
                     />
@@ -298,23 +332,21 @@ const enviarMensaje = (texto) => {
               }}
             >
 
-
-
 <img
   src={
-    pensando
-      ? '/mascotas/lumen_pensando.gif'
-      : respondiendo
-        ? '/mascotas/lumen_respondiendo.gif'
-        : pregunta.trim()
-          ? '/mascotas/lumen_atento.gif'
-          : '/mascotas/lumen_sentado.gif'
+    acompanando
+      ? '/mascotas/lumen_acompanando.gif'
+      : pensando
+        ? '/mascotas/lumen_pensando.gif'
+        : respondiendo
+          ? '/mascotas/lumen_respondiendo.gif'
+          : saludando
+            ? '/mascotas/lumen_saludando.gif'
+            : '/mascotas/lumen_sentado.gif'
   }
   alt=""
   className="mascota-sentada"
 />
-
-
 
               <input
                 type="text"
@@ -326,15 +358,13 @@ const enviarMensaje = (texto) => {
                 }
               />
 
-             
 <button
   type="submit"
   aria-label="Enviar mensaje"
-  disabled={!pregunta.trim() || pensando || respondiendo}
+  disabled={!pregunta.trim() || pensando || respondiendo || acompanando}
 >
   <Send size={21} />
 </button>
-
 
             </form>
 

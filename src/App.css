@@ -980,15 +980,17 @@
 
 /* MASCOTA JUNTO AL MENSAJE */
 
+
 .avatar-mensaje {
-  width: 38px;
-  height: 38px;
-  padding: 3px;
-  background: #FFF5D6;
-  border-radius: 50%;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
   flex-shrink: 0;
 }
+
 
 /* BURBUJAS DE CONVERSACIÓN */
 
@@ -1167,3 +1169,31 @@
   }
 }
 
+
+/* ACCIONES DE LA BARRA SUPERIOR */
+
+.acciones-superiores {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.acciones-superiores .identificacion {
+  text-align: right;
+}
+
+/* MAYOR ESPACIO PARA LA CONVERSACIÓN */
+
+.mensajes {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .acciones-superiores {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+}
