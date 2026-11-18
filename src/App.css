@@ -1,0 +1,1169 @@
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* MENÚ LATERAL */
+
+.sidebar {
+  width: 260px;
+  background: var(--azul);
+  color: white;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--amarillo);
+}
+
+.marca h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  letter-spacing: 4px;
+}
+
+.marca span {
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: white;
+}
+
+.subtitulo {
+  font-size: 12px;
+  color: #C2D0E2;
+  line-height: 1.6;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  background: transparent;
+  color: #DFE7F2;
+  font-size: 13px;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.menu button svg {
+  flex-shrink: 0;
+  color: var(--amarillo);
+}
+
+.menu button:hover {
+  background: #254267;
+}
+
+.menu button.activo {
+  background: var(--amarillo);
+  color: var(--azul);
+  font-weight: 700;
+}
+
+.menu button.activo svg {
+  color: var(--azul);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 50px;
+  text-align: center;
+  color: #DCE4EF;
+}
+
+.sidebar-footer span {
+  color: var(--amarillo);
+  font-size: 30px;
+}
+
+.sidebar-footer p {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.sidebar-footer small {
+  font-size: 10px;
+  color: #A8BBD4;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.contenido {
+  flex: 1;
+  min-width: 0;
+  padding: 40px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-radius: 20px;
+  background: var(--azul);
+  color: white;
+  margin-bottom: 25px;
+}
+
+.etiqueta {
+  color: var(--amarillo);
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.encabezado h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 34px;
+  margin: 12px 0;
+}
+
+.encabezado p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #D6E0ED;
+}
+
+.sol-decorativo {
+  color: var(--amarillo);
+  opacity: 0.85;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+/* ASISTENTE VIRTUAL */
+
+.chat {
+  background: white;
+  border: 1px solid #E3E8EF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(16, 43, 80, 0.06);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #E7EBF0;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: #FFF4CD;
+  color: #967017;
+}
+
+.chat-header h3 {
+  font-size: 17px;
+}
+
+.chat-header span {
+  font-size: 11px;
+  color: #64748B;
+}
+
+.mensajes {
+  min-height: 260px;
+  max-height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+}
+
+.mensaje {
+  max-width: 80%;
+  padding: 15px 18px;
+  border-radius: 15px;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.mensaje.bot {
+  background: #EDF2F8;
+  color: var(--azul);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.mensaje.usuario {
+  background: var(--azul);
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+/* PREGUNTAS SUGERIDAS */
+
+.preguntas-rapidas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 24px 20px;
+}
+
+.preguntas-rapidas button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #DCE4EE;
+  background: white;
+  color: var(--azul);
+  border-radius: 25px;
+  padding: 9px 14px;
+  font-size: 12px;
+}
+
+.preguntas-rapidas button:hover {
+  background: #FFF4CD;
+  border-color: var(--amarillo);
+}
+
+/* ENTRADA DE TEXTO */
+
+.entrada-chat {
+  display: flex;
+  gap: 10px;
+  padding: 20px 24px;
+  border-top: 1px solid #E7EBF0;
+}
+
+.entrada-chat input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #DCE4EE;
+  border-radius: 12px;
+  background: #F7F9FC;
+  color: var(--azul);
+  padding: 14px;
+  font-size: 14px;
+}
+
+.entrada-chat button {
+  background: var(--azul);
+  color: var(--amarillo);
+  border: none;
+  border-radius: 12px;
+  padding: 0 18px;
+  display: grid;
+  place-items: center;
+}
+
+.entrada-chat button:hover {
+  background: #254267;
+}
+
+.aviso {
+  text-align: center;
+  color: #64748B;
+  font-size: 11px;
+  padding: 0 24px 20px;
+  line-height: 1.6;
+}
+
+/* OTRAS SECCIONES */
+
+.panel {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  min-height: 300px;
+  border: 1px solid #E3E8EF;
+}
+
+.panel h2 {
+  margin-bottom: 15px;
+}
+
+.panel p {
+  color: #64748B;
+  margin-bottom: 25px;
+}
+
+.panel span {
+  display: inline-block;
+  background: #FFF4CD;
+  color: #826317;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 12px;
+}
+
+.pie {
+  text-align: center;
+  color: #64748B;
+  font-size: 11px;
+  padding: 25px 0;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .subtitulo {
+    margin: 12px 0;
+  }
+
+  .menu {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .menu button {
+    white-space: nowrap;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .contenido {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .encabezado {
+    padding: 22px;
+  }
+
+  .encabezado h2 {
+    font-size: 25px;
+  }
+
+  .sol-decorativo {
+    display: none;
+  }
+
+  .mensaje {
+    max-width: 95%;
+  }
+
+  .preguntas-rapidas {
+    padding: 0 16px 16px;
+  }
+
+  .entrada-chat {
+    padding: 16px;
+  }
+}
+
+
+/* IDENTIDAD VISUAL UNICAH */
+
+.marca h1,
+.encabezado h2,
+.sidebar-footer p {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.marca h1 {
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.marca span {
+  color: var(--amarillo);
+}
+
+.encabezado h2 {
+  font-weight: 700;
+}
+
+.mensaje.bot {
+  background: #EDF2FF;
+}
+
+.menu button:hover {
+  background: #163B99;
+}
+
+.entrada-chat button {
+  background: var(--amarillo);
+  color: var(--azul);
+}
+
+.entrada-chat button:hover {
+  background: #E8A600;
+}
+
+/* BARRA INSTITUCIONAL */
+
+.barra-institucional {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #E3E8EF;
+  border-radius: 14px;
+  padding: 12px 22px;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.logo-unicah {
+  width: 220px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.identificacion {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 5px;
+}
+
+.identificacion span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azul);
+}
+
+.identificacion small {
+  font-size: 11px;
+  color: #64748B;
+}
+
+/* DISTRIBUCIÓN GENERAL */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.contenido {
+  padding: 24px 30px;
+}
+
+.encabezado {
+  padding: 18px 24px;
+  margin-bottom: 18px;
+}
+
+.encabezado h2 {
+  font-size: 26px;
+  margin: 8px 0;
+}
+
+.encabezado p {
+  font-size: 13px;
+}
+
+.sol-decorativo {
+  width: 55px;
+  height: 55px;
+}
+
+.mensajes {
+  min-height: 160px;
+  max-height: 340px;
+}
+
+.chat-header {
+  padding: 16px 20px;
+}
+
+.sidebar-footer {
+  padding-top: 25px;
+}
+
+.pie {
+  padding: 16px 0;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+
+  .contenido {
+    padding: 14px;
+  }
+
+  .barra-institucional {
+    padding: 10px;
+  }
+
+  .logo-unicah {
+    width: 160px;
+    height: 55px;
+  }
+
+  .identificacion span {
+    font-size: 10px;
+  }
+
+  .identificacion small {
+    font-size: 9px;
+  }
+
+  .encabezado h2 {
+    font-size: 23px;
+  }
+}
+
+/* ====================================
+   LUMEN - DISTRIBUCIÓN A PANTALLA COMPLETA
+   ==================================== */
+
+@media (min-width: 769px) {
+
+  body {
+    overflow: hidden;
+  }
+
+  #root {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .app {
+    display: flex;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* MENÚ LATERAL */
+
+  .sidebar {
+    position: relative;
+    width: 250px;
+    height: 100%;
+    padding: 20px 16px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #36519C transparent;
+  }
+
+  .marca h1 {
+    font-size: 28px;
+  }
+
+  .marca svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .subtitulo {
+    font-size: 11px;
+    margin: 14px 0 20px;
+  }
+
+  .menu {
+    gap: 4px;
+  }
+
+  .menu button {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+
+  .sidebar-footer {
+    padding-top: 12px;
+  }
+
+  .sidebar-footer span {
+    font-size: 22px;
+  }
+
+  .sidebar-footer p {
+    font-size: 12px;
+    margin: 5px 0;
+  }
+
+  /* CONTENIDO PRINCIPAL */
+
+  .contenido {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    max-width: none;
+    padding: 16px 24px;
+    gap: 12px;
+    overflow-y: auto;
+  }
+
+  /* BARRA INSTITUCIONAL */
+
+  .barra-institucional {
+    flex-shrink: 0;
+    padding: 6px 20px;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .logo-unicah {
+    width: 200px;
+    height: 58px;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .identificacion span {
+    font-size: 12px;
+  }
+
+  .identificacion small {
+    font-size: 10px;
+  }
+
+  /* ENCABEZADO */
+
+  .encabezado {
+    flex-shrink: 0;
+    padding: 14px 22px;
+    margin: 0;
+    border-radius: 14px;
+  }
+
+  .etiqueta {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .encabezado h2 {
+    font-size: 24px;
+    margin: 5px 0;
+  }
+
+  .encabezado p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .sol-decorativo {
+
+    width: 48px;
+    height: 48px;
+  }
+
+  /* CHAT ADAPTABLE */
+
+  .chat {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    flex-shrink: 0;
+    padding: 12px 20px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .chat-header h3 {
+    font-size: 15px;
+  }
+
+  .chat-header span {
+    font-size: 10px;
+  }
+
+  /* SOLO LOS MENSAJES SE DESPLAZAN */
+
+  .mensajes {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    padding: 18px 20px;
+    gap: 12px;
+    scrollbar-width: thin;
+  }
+
+  .mensaje {
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 12px 16px;
+  }
+
+  /* PREGUNTAS SUGERIDAS */
+
+  .preguntas-rapidas {
+    flex-shrink: 0;
+    padding: 8px 20px 12px;
+  }
+
+  .preguntas-rapidas button {
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+
+  /* CAMPO DE TEXTO SIEMPRE VISIBLE */
+
+  .entrada-chat {
+    flex-shrink: 0;
+    padding: 12px 20px;
+  }
+
+  .entrada-chat input {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .entrada-chat button {
+    padding: 0 16px;
+  }
+
+  .aviso {
+    flex-shrink: 0;
+    font-size: 10px;
+    padding: 0 20px 12px;
+    line-height: 1.5;
+  }
+
+  .pie {
+    flex-shrink: 0;
+    padding: 0;
+    font-size: 10px;
+  }
+}
+
+/* PANTALLAS DE POCA ALTURA */
+
+@media (min-width: 769px) and (max-height: 750px) {
+
+  .contenido {
+    padding: 10px 18px;
+    gap: 8px;
+  }
+
+  .barra-institucional {
+    padding: 4px 16px;
+  }
+
+  .logo-unicah {
+    height: 46px;
+  }
+
+  .encabezado {
+    padding: 10px 18px;
+  }
+
+  .encabezado h2 {
+    font-size: 21px;
+  }
+
+  .etiqueta {
+    display: none;
+  }
+
+  .sidebar-footer small {
+    display: none;
+  }
+
+  .chat-header {
+    padding: 10px 16px;
+  }
+
+  .mensajes {
+    padding: 12px 16px;
+  }
+
+  .sidebar {
+    padding: 14px 16px;
+  }
+
+  .subtitulo {
+    margin-bottom: 12px;
+  }
+
+  .menu button {
+    padding: 9px 10px;
+  }
+}
+
+/* CELULARES */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow: auto;
+  }
+
+  #root,
+  .app {
+    height: auto;
+    overflow: visible;
+  }
+
+  .contenido {
+    height: auto;
+    padding: 12px;
+  }
+
+  .chat {
+    min-height: 420px;
+  }
+
+  .mensajes {
+    flex: 1;
+    min-height: 160px;
+    max-height: 320px;
+  }
+}
+
+/* AJUSTE DEL LOGOTIPO INSTITUCIONAL */
+
+.logo-unicah {
+  width: 230px;
+  height: 75px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.barra-institucional {
+  padding: 0 18px;
+  min-height: 75px;
+}
+
+
+/* MASCOTA LUMEN */
+
+.mascota-marca {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.mascota-avatar {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.avatar {
+  background: #FFF5D6;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.marca {
+  gap: 10px;
+}
+
+/* MASCOTA DEL ENCABEZADO */
+
+.mascota-bienvenida {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.encabezado {
+  padding: 8px 20px;
+}
+
+@media (max-width: 768px) {
+  .mascota-bienvenida {
+    width: 60px;
+    height: 60px;
+  }
+}
+/* =================================
+   MEJORAS DEL ASISTENTE LUMEN
+   ================================= */
+
+/* ENCABEZADO DEL CHAT */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.perfil-asistente {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* BOTÓN NUEVA CONVERSACIÓN */
+
+.nueva-conversacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid #DCE3F2;
+  border-radius: 10px;
+  color: var(--azul);
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nueva-conversacion:hover {
+  background: #FFF5D6;
+  border-color: var(--amarillo);
+}
+
+/* DISTRIBUCIÓN DE MENSAJES */
+
+.fila-mensaje {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.fila-mensaje.bot {
+  justify-content: flex-start;
+}
+
+.fila-mensaje.usuario {
+  justify-content: flex-end;
+}
+
+/* MASCOTA JUNTO AL MENSAJE */
+
+.avatar-mensaje {
+  width: 38px;
+  height: 38px;
+  padding: 3px;
+  background: #FFF5D6;
+  border-radius: 50%;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* BURBUJAS DE CONVERSACIÓN */
+
+.mensaje {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 85%;
+  line-height: 1.6;
+  animation: aparecerMensaje 0.25s ease;
+}
+
+.mensaje.bot {
+  background: #EDF2FF;
+  color: var(--azul);
+  border-radius: 4px 15px 15px 15px;
+}
+
+.mensaje.usuario {
+  background: var(--azul);
+  color: white;
+  border-radius: 15px 4px 15px 15px;
+}
+
+@keyframes aparecerMensaje {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* BOTÓN DE ENVÍO */
+
+.entrada-chat button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.entrada-chat input:focus {
+  outline: none;
+  border-color: var(--amarillo);
+  box-shadow: 0 0 0 3px #FFF3CB;
+}
+
+/* DESPLAZAMIENTO DEL CHAT */
+
+.mensajes {
+  scrollbar-width: thin;
+  scrollbar-color: #C4CFE4 transparent;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 768px) {
+
+  .nueva-conversacion {
+    font-size: 10px;
+    padding: 8px;
+  }
+
+  .avatar-mensaje {
+    width: 30px;
+    height: 30px;
+  }
+
+  .mensaje {
+    max-width: calc(100% - 40px);
+  }
+
+  .perfil-asistente {
+    gap: 7px;
+  }
+
+  .chat-header h3 {
+    font-size: 13px;
+  }
+
+  .chat-header span {
+    font-size: 9px;
+  }
+}
+
+/* RESPETAR PREFERENCIAS DE ANIMACIÓN */
+
+@media (prefers-reduced-motion: reduce) {
+  .mensaje {
+    animation: none;
+  }
+}
+/* OPTIMIZACIÓN DEL ESPACIO DEL CHAT */
+
+.chat {
+  flex: 1;
+  min-height: 0;
+}
+
+.mensajes {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+  padding: 22px;
+}
+
+.barra-institucional {
+  flex-shrink: 0;
+}
+
+.chat-header {
+  padding: 12px 20px;
+}
+
+@media (max-width: 768px) {
+  .mensajes {
+    min-height: 220px;
+    max-height: 450px;
+  }
+}
+/* ELIMINAR EL FONDO AMARILLO DEL AVATAR */
+
+.chat-header .avatar {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: 65px;
+  height: 65px;
+  padding: 0;
+}
+
+.mascota-avatar {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  background: transparent;
+}
+
+
+/* MASCOTA ANIMADA SOBRE LA BARRA DE ESCRITURA */
+
+.entrada-chat {
+  position: relative;
+}
+
+.mascota-sentada {
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+
+  right: 95px;
+  bottom: calc(100% - 28px);
+
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 768px) {
+  .mascota-sentada {
+    width: 65px;
+    height: 65px;
+    right: 75px;
+  }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .mascota-sentada {
+    display: none;
+  }
+}
+
